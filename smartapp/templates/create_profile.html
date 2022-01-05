@@ -1,0 +1,28 @@
+{%extends 'base.html'%}
+{% load static %}
+{% load bootstrap4 %}
+{% block styles %}
+
+{{ block.super}}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<style>
+
+</style>
+<div class="container">
+    <div class="box">
+        <div class="text-center">
+            <div class="title">Create a profile to start using LaHood</div>
+            <hr>
+            <div class="guide">Please provide some of your credentials to use la-hood</div>
+        </div>
+        <form action="{%url 'create_profile'%}" method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+            {% bootstrap_form form%}
+            <input type="submit" class="btn btn-dark " value="Create Profile">
+        </form>
+    </div>
+</div>
+{% endblock %}

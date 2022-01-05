@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  {% load bootstrap4 %}
+  <nav class="navbar navbar-default navbar-light bg-primary" style="padding: 1em;">
+    <div class="container-fluid">
+      <img src="" width="50" alt="">
+      <div class="col-sm-2 col-md-2 navbar-header">
+        
+        <button class="btn btn-default"><a class="navbar-brand" href=""> <i>smart budget </i> </a></button>
+      </div>
+
+      <div class="col-sm-3 col-md-3 navbar-right">
+        
+        
+      </div>
+
+      <li>
+        <a class="btn btn-default" href="/profile/" style="font-weight: 700;">{{ user.username }}</a>
+    </li>
+
+
+      {% if user.is_authenticated %}
+
+    <li class="dropdown btn btn-default">
+        <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown"
+            style="font-weight: 700;"><i class="far fa-user"></i>
+
+        </a>
+        <ul class="dropdown-menu" role="menu" style="font-weight: 700; text-decoration: none;">
+
+            <li class="nav-item">
+                <a class="nav-link" href="/admin" style=" color: black;"
+                    style="font-weight: 700;">Dashboard</a>
+            </li>
+            <li>
+                <a class="btn btn-default" href="/accounts/register" style="font-weight: 700;">Register</a>
+            </li>
+           
+            <li>
+                <a class="btn btn-default" href="/logout" style="font-weight: 700;">Log Out</a>
+            </li>
+        </ul>
+    </li>
+
+    {% else %}
+    <li>
+        <a class="btn btn-default" href="/accounts/login" style="font-weight: 700;">Login</a>
+    </li>
+    {% endif %}
+<img src="" width="50" alt="">
+    </div>
+  </nav>
+  
+</body>
+</html>
