@@ -69,3 +69,41 @@ def add_expense(request):
 
         return redirect('expenses')
 
+
+@login_required(login_url='/authentication/login')
+def expense_edit(request, id):
+    expense = Expense.objects.get(pk=id)
+    categories = Category.objects.all()
+    context = {
+        'expense': expense,
+        'values': expense,
+        'categories': categories
+    }
+    if request.method == 'GET':
+        return render(request, 'expenses/edit-expense.html', context)
+    if request.method == 'POST':
+        amount = request.POST['amount']
+
+        if not amount:
+            messages.error(request, 'Amount is required')
+            return render(request, 'expenses/edit-expense.html', context)
+        description = request.POST['description']
+        date = request.POST['expense_date']
+        category = request.POST['category']
+
+        if not description:
+            messages.error(request, 'description is required')
+            return render(request, 'expenses/edit-expense.html', context)
+
+        expense.owner = request.user
+        expense.amount = amount
+        expense. date = date
+        expense.category = category
+        expense.description = description
+
+        expense.save()
+        messages.success(request, 'Expense updated  successfully')
+
+        return redirect('expenses')
+
+
