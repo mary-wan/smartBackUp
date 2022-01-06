@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     'cloudinary',
     'smartapp',
     'bootstrap4',
+    'userincome',
+    'userpreferences',
 ]
 
 MIDDLEWARE = [
