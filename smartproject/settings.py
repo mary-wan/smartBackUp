@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'smartapp',
     'bootstrap4',
     'userincome',
-    'userpreferences',
+   
 ]
 
 MIDDLEWARE = [
