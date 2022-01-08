@@ -7,6 +7,20 @@ from smartapp.forms import *
 from .models import *
 
 
+def register(request):
+    if request.user.is_authenticated:
+    #redirect user to the profile page
+        return redirect('home')
+    if request.method=="POST":
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            return redirect('login')
+            
+    else:
+        form = UserRegisterForm()
+    return render(request,"registration/register.html",{'form':form})
 
 # Create your views here.
 @login_required(login_url='/accounts/login/')
